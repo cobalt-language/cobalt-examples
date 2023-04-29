@@ -1,18 +1,17 @@
-#===============================================#
+#################################################
 # This example demonstates the calculation of   #
 # Fibonacci numbers using both iterative and    #
 # recursive approaches.                         #
-#===============================================#
-
+#################################################
 fn fib_recur(x: u64): u64 = if (x <= 1) x else fib_recur(x - 1) + fib_recur(x - 2); # LLVM optimizes this into a loop with the "tail call elimination" pass
 fn fib_iter(x: u64): u64 = {
-  mut a = 0;
-  mut b = 1;
-  mut i = 0;
+  mut a = 0u64;
+  mut b = 1u64;
+  mut i = 0u64;
   while (i < x) {
     let tmp = b;
     b += a;
-    a = b;
+    a = tmp;
     ++i; # only prefix increments are supported
   }; # note the semicolon! if you foget it, it's a syntax error!
   a # the block's value is the last expression
@@ -20,4 +19,4 @@ fn fib_iter(x: u64): u64 = {
 
 # if this doesn't return 0, something went wrong
 # the colons in the body are casts
-fn main(): i32 = fib_recur(100): i32 - fib_iter(100): i32;
+fn main(): i32 = (fib_recur(10): i32) - (fib_iter(10): i32);
