@@ -1,0 +1,16 @@
+#===============================================#
+# This file shows elements of Cobalt's type     #
+# system: aliases and nominals.                 #
+#===============================================#
+
+const int = i32; # This is an ALIAS. int can replace i32 anywhere
+type opaque_int = i32; # This is a NEW TYPE. opaque_int requires bitcasts (:?) to convert to and from i32
+type my_int = i32 :: { # Let's define some methods!
+  @inline fn from(val: base_t): self_t = val :? self_t; # base_t and self_t are automatically defined
+  @inline @getter fn val(self: self_t): base_t = self :? base_t;
+  @inline @method fn metd(self: self_t): base_t = self.val;
+};
+fn main(): i32 = {
+  let i = my_int.from(0); # my_int cannot be called on an instance of my_int because it is not a getter or method
+  i.val + i.metd() # val doesn't need arguments because it was marked as a getter, metd needs arguments because it is a method
+};
