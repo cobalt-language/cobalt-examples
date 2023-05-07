@@ -1,0 +1,2 @@
+# no headers necessary, Cobalt knows about factorial even though it was defined in another file
+fn main(): i32 = (factorial(10): i32) - 3628800; # this should return 0

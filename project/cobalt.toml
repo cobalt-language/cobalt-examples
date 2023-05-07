@@ -1,0 +1,13 @@
+name = "example"
+version = "1.0.0"
+desc = "A sample project"
+
+[[exe]]
+name = "test-exe"
+files = ["src/main.co"] # files can either be a glob string or an array of (non-glob) file names
+[exe.deps]
+factorial = "project" # the special "project" version specifies that the dependency is another target in the project
+
+[[lib]]
+name = "factorial"
+files = ["src/fac.co"]

@@ -1,0 +1,2 @@
+@export
+fn factorial(x: i32): i32 = if (x <= 1) 1 else x * factorial(x - 1); # This needs to be exported in order for factorial to appear in the library header.
