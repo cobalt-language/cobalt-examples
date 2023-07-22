@@ -1,7 +1,7 @@
 #################################################
 # This program prints "Hello, World!" when run. #
 #################################################
-@C(extern) fn puts(str: i8 const*): null;
+@C(extern) fn puts(str: *u8): null;
 fn main(): i32 = {
   puts("Hello, World!");
   0

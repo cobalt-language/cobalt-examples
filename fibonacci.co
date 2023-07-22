@@ -5,9 +5,9 @@
 #################################################
 fn fib_recur(x: u64): u64 = if (x <= 1) x else fib_recur(x - 1) + fib_recur(x - 2); # LLVM optimizes this into a loop with the "tail call elimination" pass
 fn fib_iter(x: u64): u64 = {
-  mut a = 0u64;
-  mut b = 1u64;
-  mut i = 0u64;
+  let mut a = 0u64;
+  let mut b = 1u64;
+  let mut i = 0u64;
   while (i < x) {
     let tmp = b;
     b += a;
